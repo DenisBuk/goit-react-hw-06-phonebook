@@ -1,13 +1,20 @@
-import React from "react";
-import PropTypes from "prop-types";
+import { useDispatch, useSelector } from "react-redux";
+import { setFilter } from "redux/FilterSlice";
 
-function Filter({ value, onFilterChange }) { 
+function Filter() {
+    const dispatch = useDispatch();
+    const filterValue = useSelector(state => state.filter);
+
+    const onFilterChange = e => {
+        dispatch(setFilter(e.currentTarget.value.toLowreCase()));
+    };
+
     return (
         <label>
             Find contacts by name : 
             <input
                 onChange={onFilterChange}
-                value={value}
+                value={filterValue}
                 type="text"
                 name="filter"
             />
@@ -15,9 +22,6 @@ function Filter({ value, onFilterChange }) {
     );
 };
 
-Filter.propTypes = {
-    value: PropTypes.string.isRequired,
-    onFilterChange: PropTypes.func.isRequired,
-};
+
 
 export default Filter;

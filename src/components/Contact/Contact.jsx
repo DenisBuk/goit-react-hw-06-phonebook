@@ -1,15 +1,25 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import { useDispatch } from "react-redux";
+import { deleteContact } from "redux/ContactSlice";
+
 import Button from "../Button";
 import css from "./Contact.module.css";
 
-function Contact({ name, number, idx, onClick }) {
+function Contact({ name, number, idx, id }) {
+    
+    const dispatch = useDispatch();
+
     return (
         <li className={css.Contact}>
             <p>
                 {idx + 1} - {name}: { number}
-                <Button onClick={onClick} text="Delete" type="button"/>
+                <Button
+                    onClick={() => dispatch(deleteContact(id))}
+                    text="Delete"
+                    type="button"
+                />
             </p>
         </li>
     );

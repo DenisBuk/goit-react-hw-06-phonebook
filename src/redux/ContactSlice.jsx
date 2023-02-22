@@ -7,4 +7,24 @@ const initialState = [
     { id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
 ];
 
-export
+export const ContactsSlice = createSlice({
+    name: 'contacts',
+    initialState,
+    reducers: {
+        addContact(state, { payload: { name, number } }) {
+            state.every(item => item.name.toLowerCase() !== name.toLowerCase())
+                ? state.push({
+                    name: name,
+                    number: number,
+                    id: nanoid(),
+                })
+                : alert(`${name} is alredy in contact`)
+        },
+
+        deleteContact(state, { payload: id }) {
+            return state.filter(item => item.id !== id);
+        },
+    },
+});
+
+export const { addContact, deleteContact } = ContactsSlice.actions;
