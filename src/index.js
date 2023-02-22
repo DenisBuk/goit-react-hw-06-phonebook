@@ -1,5 +1,5 @@
 import React from 'react';
-import { creteRoot } from 'react-dom/client';
+import { createRoot } from 'react-dom/client';
 import { store, persistor } from './redux/store'
 import App  from 'App';
 import './index.css';
@@ -8,7 +8,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 
 const container = document.getElementById('root');
-const root = creteRoot(container);
+const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <Provider store={store}>

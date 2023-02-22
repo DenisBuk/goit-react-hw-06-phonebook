@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from 'react-redux'
-import { addContact } from "redux/ContactSlice";
+import { addContact } from "redux/ContactsSlice";
 import Button from "../Button";
 import css from "./ContactForm.module.css";
 
