@@ -32,7 +32,7 @@ function ContactForm() {
 
         e.preventDefault();
     
-        const isExist = contacts.every
+        const isExist = contacts.find
             (item => item.name.toLowerCase() !== name.toLowerCase());
         
         if (isExist ) {
