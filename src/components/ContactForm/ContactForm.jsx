@@ -13,7 +13,7 @@ function ContactForm() {
 
 
     const handleInputChange = ({ currentTarget: { name, value } }) => {
-        switch (name) { 
+        switch (name) {
             case "name":
                 setName(value);
                 break;
@@ -31,16 +31,16 @@ function ContactForm() {
     const onFormSubmit = e => {
 
         e.preventDefault();
-    
+
         const isExist = contacts.find
-            (item => item.name.toLowerCase() !== name.toLowerCase());
-        
-        if (isExist ) {
+            (item => item.name.toLowerCase() === name.toLowerCase());
+
+        if (isExist) {
             return alert(`${name} is alredy in contacts`);
         }
-    
 
-        dispatch(addContact({name, number }));
+
+        dispatch(addContact({ name, number }));
         setName("");
         setNumber("");
     };
